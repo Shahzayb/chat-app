@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/app.js"></script>
+</head>
+<body>
+
+<div class="content">
+
+    <noscript>Please enable javascript to use this app</noscript>
+
+    <div class="container" id="username-container">
+        <h1 class="heading">Chat App</h1>
+        <form class="padding top-bottom-margin" id="username-form" autocomplete="off">
+            <input type="text" maxlength="15"
+                   placeholder="Enter name ( 15 characters limit )" id="username-field" class="text-field">
+            <input type="submit" value="Enter" class="button">
+        </form>
+    </div>
+
+    <div class="container" id="chat-container" hidden>
+        <h1 class="heading">Chat App</h1>
+
+        <div id="messages-container">
+            <div id="new-message-alert" style="display: none">New Message</div>
+            {{#each messages}}
+                <div class="message-container">
+                    <span class="name">{{username}}</span>
+                    <span class="message">{{message}}</span>
+                </div>
+            {{/each}}
+        </div>
+
+        <form class="padding" id="message-form" autocomplete="off">
+            <input type="text" id="sending-message" class="text-field" maxlength="150"
+                   placeholder="Enter message ( 150 characters limit )">
+            <input type="submit" value="Send" class="button">
+        </form>
+
+    </div>
+
+</div>
+
+<footer>Created by Shahzaib</footer>
+</body>
+</html>
