@@ -4,7 +4,6 @@ window.addEventListener("load", function () {
     const sendingMessage = document.getElementById("sending-message");
     const messageForm = document.getElementById("message-form");
     const messagesContainer = document.getElementById("messages-container");
-    const messageAlert = document.getElementById("new-message-alert");
     const usernameContainer = document.getElementById("username-container");
     const chatContainer = document.getElementById("chat-container");
     const usernameForm = document.getElementById("username-form");
@@ -13,24 +12,19 @@ window.addEventListener("load", function () {
 
     chatContainer.hidden = true;
     usernameContainer.hidden = false;
-    messageAlert.hidden = true;
     usernameField.focus();
 
-    usernameForm.addEventListener("submit", (e) => {
+    usernameForm.addEventListener("submit", function(e) {
         e.preventDefault();
         username = usernameField.value;
         if (username && username.trim()) {
             username = username.trim();
             socket.username = username;
+
             usernameContainer.hidden = true;
             chatContainer.hidden = false;
             sendingMessage.focus();
         }
-    });
-
-    messageAlert.addEventListener("click", (e) => {
-        e.target.hidden = true;
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     });
 
     socket.on("message", (msg) => {
@@ -47,20 +41,16 @@ window.addEventListener("load", function () {
         messageContainer.append(name);
         messageContainer.append(message);
 
-        messagesContainer.append(messageContainer);
-
-        if (username === msg.username) {
+        if (username === msg.username || atBottom(messagesContainer)) {
+            messagesContainer.append(messageContainer);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        } else if (!isAtBottom(messagesContainer)) {
-            messageAlert.hidden = false;
-            setTimeout(() => {
-                messageAlert.hidden = true;
-            }, 2000);
+        } else {
+            messagesContainer.append(messageContainer);
         }
     });
 
-    messageForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    messageForm.addEventListener("submit", function (e) {
+        e.preventDefault();
         if (sendingMessage.value && sendingMessage.value.trim()) {
             socket.emit("message", {
                 message: sendingMessage.value.trim(),
@@ -72,6 +62,6 @@ window.addEventListener("load", function () {
     });
 });
 
-function isAtBottom(elem) {
+function atBottom(elem) {
     return (elem.scrollHeight - elem.scrollTop - elem.clientHeight) === 0;
 }

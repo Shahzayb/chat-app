@@ -7,8 +7,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { messages: getMessages() });
 });
 
-router.get('/error', function(req, res, next) {
-  return next(new Error("Custom Error"));
-});
-
 module.exports = router;
