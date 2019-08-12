@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Chat App</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <title>Chat app</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="description" content="This is a simple online chat app">
+    <meta name="keywords" content="chat,socket.io,online chat">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/app.js"></script>
 </head>
+
 <body>
 
-<div class="content">
+    <div class="container">
 
-    <noscript>Please enable javascript to use this app</noscript>
+        <noscript>Please enable javascript to use this app</noscript>
 
-    <div class="container" id="username-container">
-        <h1 class="heading">Chat App</h1>
-        <form class="padding top-bottom-margin" id="username-form" autocomplete="off">
-            <input type="text" maxlength="15"
-                   placeholder="Enter name ( 15 characters limit )" id="username-field" class="text-field">
-            <input type="submit" value="Enter" class="button">
-        </form>
-    </div>
-
-    <div class="container" id="chat-container" hidden>
         <h1 class="heading">Chat App</h1>
 
-        <div id="messages-container">
+        <hr>
+
+        <div class="messages-container" style="display: none">
             {{#each messages}}
                 <div class="message-container">
-                    <span class="name">{{username}}</span>
+                    <span class="username">{{username}}</span>
                     <span class="message">{{message}}</span>
                 </div>
             {{/each}}
         </div>
 
-        <form class="padding" id="message-form" autocomplete="off">
-            <input type="text" id="sending-message" class="text-field" maxlength="150"
-                   placeholder="Enter message ( 150 characters limit )">
-            <input type="submit" value="Send" class="button">
+        <form id="message-form" autocomplete="off" class="margin-tb" style="display: none">
+            <input id="sending-message" class="input-text" type="text" maxlength="150" placeholder="Enter message ( 150 characters limit )">
+            <input class="button" type="submit" value="Send">
         </form>
-
+        <div class="center" id="username-form-container">
+            <form id="username-form" autocomplete="off">
+                <input id="sending-username" class="input-text" type="text" maxlength="15" placeholder="Enter name ( 15 characters limit )">
+                <input class="button" type="submit" value="Enter">
+            </form>
+        </div>
     </div>
 
-</div>
 
-<footer>Created by Shahzaib</footer>
 </body>
+
 </html>

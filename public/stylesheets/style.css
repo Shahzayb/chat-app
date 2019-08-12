@@ -1,95 +1,110 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: #3d3d3d;;
+    box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-}
-
-.content {
-    min-height: calc(100vh - 58px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    width: 600px;
-    overflow: hidden;
-    box-shadow: 0 0 5px;
-    border-radius: 10px;
-    padding: 5px;
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #3d3d3d;
+    font-size: 16px;
 }
 
 .heading {
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.center form {
+    width: 100%;
+}
+
+.input-text {
+    display: block;
+    width: 96%;
+    margin: auto;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.button {
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    margin: auto;
+    margin-top: 15px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background-color: #acacac;
+}
+
+.messages-container {
+    overflow: auto;
+    height: calc(100vh - 220px);
 }
 
 .message-container {
     padding: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
 }
 
-#messages-container {
-    height: 400px;
-    overflow: auto;
-}
-
-.name {
+.username {
     flex-basis: 20%;
+    text-align: center;
+    margin-right: 5px;
     padding: 5px;
-    box-shadow: 0 0 2px #f0f0f0;
-    border-radius: 5px;
-    margin-right: 6px;
+    word-break: break-all;
 }
 
 .message {
     flex-basis: 80%;
+    background-color: #f1f1f1;
     padding: 5px;
-    background-color: #f0f0f0;
+    padding-left: 20px;
     border-radius: 5px;
+    word-break: break-all;
 }
 
-.top-bottom-margin {
+.margin-tb {
     margin: 20px 0px;
 }
 
-.padding {
-    padding: 10px;
-}
+@media screen and (min-width: 700px)  {
+    html, body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.text-field {
-    border: none;
-    outline: none;
-    border-bottom: 2px solid;
-    width: 80%;
-    font-size: 18px;
-    padding: 10px;
-}
+    .container {
+        width: 700px;
+        padding: 5px;
+        box-shadow: 0 0 5px #f1f1f1;
+        border-radius: 10px;
+    }
 
-.button {
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    font-size: 18px;
-    margin: 0 10px;
-    outline: none;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #d6d6d6;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
+    .center {
+        max-height: 600px;
+    }
 }

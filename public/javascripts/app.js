@@ -3,33 +3,32 @@ const socket = io.connect();
 window.addEventListener("load", function () {
     const sendingMessage = document.getElementById("sending-message");
     const messageForm = document.getElementById("message-form");
-    const messagesContainer = document.getElementById("messages-container");
-    const usernameContainer = document.getElementById("username-container");
-    const chatContainer = document.getElementById("chat-container");
+    const messagesContainer = document.querySelector(".messages-container");
+    const usernameContainer = document.getElementById("username-form-container");
     const usernameForm = document.getElementById("username-form");
-    const usernameField = document.getElementById("username-field");
+    const sendingUsername = document.getElementById("sending-username");
     let username;
 
-    chatContainer.hidden = true;
-    usernameContainer.hidden = false;
-    usernameField.focus();
+    sendingUsername.focus();
 
     usernameForm.addEventListener("submit", function(e) {
         e.preventDefault();
-        username = usernameField.value;
+        username = sendingUsername.value;
         if (username && username.trim()) {
             username = username.trim();
             socket.username = username;
 
-            usernameContainer.hidden = true;
-            chatContainer.hidden = false;
+            usernameContainer.style.display = "none";
+            usernameForm.style.display = "none";
+            messageForm.style.display = "";
+            messagesContainer.style.display = "";
             sendingMessage.focus();
         }
     });
 
     socket.on("message", (msg) => {
         const name = document.createElement("span");
-        name.className = "name";
+        name.className = "username";
         name.append(msg.username);
 
         const message = document.createElement("span");

@@ -7,9 +7,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "~4.16.4",
     "hbs": "~4.0.4",
     "morgan": "~1.9.1",
     "socket.io": "~2.2.0",
@@ -21,15 +20,17 @@
     "url": "git+https://github.com/Shahzayb/chat-app.git"
   },
   "keywords": [
-    "chat"
+    "chat",
+    "online chat",
+    "web socket chat"
   ],
   "author": "Shahzaib",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Shahzayb/chat-app/issues"
   },
   "homepage": "https://github.com/Shahzayb/chat-app#readme",
   "engines": {
-    "node": "11.14.0"
+    "node": "12.8.0"
   }
 }
